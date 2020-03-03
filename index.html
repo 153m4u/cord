@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="plugins/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/ionicons-2.0.1.css" />
+    <link rel="stylesheet" type="text/css" href="css/adminlte.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/fonts-googleapis30040000i700.css" />
+    <script type="text/javascript" src="plugins/jquery/jquery.min.js"></script>
+    <title>Hello World</title>
+    <style>
+        .mago {
+            display: none
+        }
+    </style>
+</head>
+
+<body class="layout-navbar-fixed">
+    <div class=>
+        <h1>PhoneGap</h1>
+
+
+
+
+
+
+
+
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <!-- Navbar -->
+            <nav class="main-header navbar navbar-expand navbar-dark navbar-dark">
+                <!-- Left navbar links -->
+                <!-- <ul class="navbar-nav"> -->
+                <ul class="nav nav-pills">
+                    <!-- <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+              </li>
+              <li class="nav-item d-xs-inline-block">
+                <a href="<?= base_url('assets/pages/index3.html');?>" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item d-xs-inline-block">
+                <a href="#" class="nav-link">Contact</a>
+              </li>
+              <li class="nav-item d-xs-inline-block">
+                <a href="#" class="nav-link">Contact</a>
+              </li>
+              <li class="nav-item d-xs-inline-block">
+                <a href="#" class="nav-link">Contact</a>
+              </li>
+              <li class="nav-item d-xs-inline-block">
+                <a href="#" class="nav-link">Contact</a>
+              </li> -->
+
+                    <li class="nav-item col-4"><a class="nav-link active" href="#activity"
+                            data-toggle="tab">Transaksi</a></li>
+                    <li class="nav-item col-4"><a class="nav-link" href="#timeline" data-toggle="tab">History</a></li>
+                    <li class="nav-item col-4"><a class="nav-link" href="#settings" data-toggle="tab">Akun</a></li>
+                    <li class="nav-item col-4"><a class="nav-link" href="#history" data-toggle="tab">History</a></li>
+                    <li class="nav-item col-4"><a class="nav-link" href="#produks" data-toggle="tab">Produk</a></li>
+                    <li class="nav-item col-4"><a class="nav-link" href="#akun" data-toggle="tab">Akun</a></li>
+
+                </ul>
+
+
+
+
+
+
+                <!-- SEARCH FORM -->
+                <!-- <form class="form-inline ml-3">
+              <div class="input-group input-group-sm">
+                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                  <button class="btn btn-navbar" type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form> -->
+
+
+
+                <!-- Right navbar links -->
+                <!-- <ul class="navbar-nav ml-auto">
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                  <i class="far fa-comments"></i>
+                  <span class="badge badge-danger navbar-badge">3</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                  <a href="#" class="dropdown-item">
+                    <div class="media">
+                      <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                      <div class="media-body">
+                        <h3 class="dropdown-item-title">
+                          Brad Diesel
+                          <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                        </h3>
+                        <p class="text-sm">Call me whenever you can...</p>
+                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                      </div>
+                    </div>
+        
+                  </a>
+        
+                  <div class="dropdown-divider"></div>
+                  <a href="#" class="dropdown-item">
+                    <div class="media">
+                      <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                      <div class="media-body">
+                        <h3 class="dropdown-item-title">
+                          John Pierce
+                          <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                        </h3>
+                        <p class="text-sm">I got your message bro</p>
+                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                      </div>
+                    </div>
+        
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a href="#" class="dropdown-item">
+        
+                    <div class="media">
+                      <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                      <div class="media-body">
+                        <h3 class="dropdown-item-title">
+                          Nora Silvester
+                          <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                        </h3>
+                        <p class="text-sm">The subject goes here</p>
+                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                      </div>
+                    </div>
+        
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                </div>
+              </li> 
+        
+        
+        
+              <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                  <i class="far fa-bell"></i>
+                  <span class="badge badge-warning navbar-badge">15</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                  <span class="dropdown-item dropdown-header">15 Notifications</span>
+                  <div class="dropdown-divider"></div>
+                  <a href="#" class="dropdown-item">
+                    <i class="fas fa-envelope mr-2"></i> 4 new messages
+                    <span class="float-right text-muted text-sm">3 mins</span>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a href="#" class="dropdown-item">
+                    <i class="fas fa-users mr-2"></i> 8 friend requests
+                    <span class="float-right text-muted text-sm">12 hours</span>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a href="#" class="dropdown-item">
+                    <i class="fas fa-file mr-2"></i> 3 new reports
+                    <span class="float-right text-muted text-sm">2 days</span>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
+                  <i class="fas fa-th-large"></i>
+                </a>
+              </li>
+            </ul> -->
+            </nav>
+            <!-- /.navbar -->
+
+
+            <!-- Main Sidebar Container -->
+
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1 class="mago">Makmur Kios</h1>
+                            </div>
+                            <!-- <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                      <li class="breadcrumb-item"><a href="#">Home</a></li>
+                      <li class="breadcrumb-item"><a href="#">Layout</a></li>
+                      <li class="breadcrumb-item active">Fixed Navbar Layout</li>
+                    </ol>
+                  </div> -->
+                        </div>
+                    </div><!-- /.container-fluid -->
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="activity">
+                                    <!-- Post -->
+                                    <div class="post">
+                                        <div class="user-block">
+
+
+
+
+                                            <img data-toggle="modal" data-target="#myModal"
+                                                class="img-circle img-bordered-sm"
+                                                src="../../dist/img/user1-128x128.jpg" alt="user image">
+
+
+
+
+
+                                            <span class="username">
+                                                <a href="#">Jonathan Burke Jr.</a>
+                                                <a href="#" class="float-right btn-tool"><i
+                                                        class="fas fa-times"></i></a>
+                                            </span>
+                                            <span class="description">Shared publicly - 7:30 PM today</span>
+                                        </div>
+                                        <!-- /.user-block -->
+                                        <p>
+                                            Lorem ipsum represents a long-held tradition for designers,
+                                            typographers and the like. Some people hate it and argue for
+                                            its demise, but others ignore the hate as they create awesome
+                                            tools to help create filler text for everyone from bacon lovers
+                                            to Charlie Sheen fans.
+                                        </p>
+
+                                        <p>
+                                            <a href="#" class="link-black text-sm mr-2"><i
+                                                    class="fas fa-share mr-1"></i>
+                                                Share</a>
+                                            <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i>
+                                                Like</a>
+                                            <span class="float-right">
+                                                <a href="#" class="link-black text-sm">
+                                                    <i class="far fa-comments mr-1"></i> Comments (5)
+                                                </a>
+                                            </span>
+                                        </p>
+
+                                        <input class="form-control form-control-sm" type="text"
+                                            placeholder="Type a comment">
+                                    </div>
+                                    <!-- /.post -->
+
+                                    <!-- Post -->
+                                    <div class="post clearfix">
+                                        <div class="user-block">
+                                            <img class="img-circle img-bordered-sm"
+                                                src="../../dist/img/user7-128x128.jpg" alt="User Image">
+                                            <span class="username">
+                                                <a href="#">Sarah Ross</a>
+                                                <a href="#" class="float-right btn-tool"><i
+                                                        class="fas fa-times"></i></a>
+                                            </span>
+                                            <span class="description">Sent you a message - 3 days ago</span>
+                                        </div>
+                                        <!-- /.user-block -->
+                                        <p>
+                                            Lorem ipsum represents a long-held tradition for designers,
+                                            typographers and the like. Some people hate it and argue for
+                                            its demise, but others ignore the hate as they create awesome
+                                            tools to help create filler text for everyone from bacon lovers
+                                            to Charlie Sheen fans.
+                                        </p>
+
+                                        <form class="form-horizontal">
+                                            <div class="input-group input-group-sm mb-0">
+                                                <input class="form-control form-control-sm" placeholder="Response">
+                                                <div class="input-group-append">
+                                                    <button type="submit" class="btn btn-danger">Send</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- /.post -->
+
+                                    <!-- Post -->
+                                    <div class="post">
+                                        <div class="user-block">
+                                            <img class="img-circle img-bordered-sm"
+                                                src="../../dist/img/user6-128x128.jpg" alt="User Image">
+                                            <span class="username">
+                                                <a href="#">Adam Jones</a>
+                                                <a href="#" class="float-right btn-tool"><i
+                                                        class="fas fa-times"></i></a>
+                                            </span>
+                                            <span class="description">Posted 5 photos - 5 days ago</span>
+                                        </div>
+                                        <!-- /.user-block -->
+                                        <div class="row mb-3">
+                                            <div class="col-sm-6">
+                                                <img class="img-fluid" src="../../dist/img/photo1.png" alt="Photo">
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-6">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <img class="img-fluid mb-3" src="../../dist/img/photo2.png"
+                                                            alt="Photo">
+                                                        <img class="img-fluid" src="../../dist/img/photo3.jpg"
+                                                            alt="Photo">
+                                                    </div>
+                                                    <!-- /.col -->
+                                                    <div class="col-sm-6">
+                                                        <img class="img-fluid mb-3" src="../../dist/img/photo4.jpg"
+                                                            alt="Photo">
+                                                        <img class="img-fluid" src="../../dist/img/photo1.png"
+                                                            alt="Photo">
+                                                    </div>
+                                                    <!-- /.col -->
+                                                </div>
+                                                <!-- /.row -->
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        <!-- /.row -->
+
+                                        <p>
+                                            <a href="#" class="link-black text-sm mr-2"><i
+                                                    class="fas fa-share mr-1"></i>
+                                                Share</a>
+                                            <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i>
+                                                Like</a>
+                                            <span class="float-right">
+                                                <a href="#" class="link-black text-sm">
+                                                    <i class="far fa-comments mr-1"></i> Comments (5)
+                                                </a>
+                                            </span>
+                                        </p>
+
+                                        <input class="form-control form-control-sm" type="text"
+                                            placeholder="Type a comment">
+                                    </div>
+                                    <!-- /.post -->
+                                </div>
+                                <!-- /.tab-pane -->
+                                <div class="tab-pane" id="timeline">
+                                    <!-- The timeline -->
+                                    <div class="timeline timeline-inverse">
+                                        <!-- timeline time label -->
+                                        <div class="time-label">
+                                            <span class="bg-danger">
+                                                10 Feb. 2014
+                                            </span>
+                                        </div>
+                                        <!-- /.timeline-label -->
+                                        <!-- timeline item -->
+                                        <div>
+                                            <i class="fas fa-envelope bg-primary"></i>
+
+                                            <div class="timeline-item">
+                                                <span class="time"><i class="far fa-clock"></i> 12:05</span>
+
+                                                <h3 class="timeline-header"><a href="#">Support Team</a> sent you an
+                                                    email</h3>
+
+                                                <div class="timeline-body">
+                                                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                                                    weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                                                    jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                                                    quora plaxo ideeli hulu weebly balihoo...
+                                                </div>
+                                                <div class="timeline-footer">
+                                                    <a href="#" class="btn btn-primary btn-sm">Read more</a>
+                                                    <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END timeline item -->
+                                        <!-- timeline item -->
+                                        <div>
+                                            <i class="fas fa-user bg-info"></i>
+
+                                            <div class="timeline-item">
+                                                <span class="time"><i class="far fa-clock"></i> 5 mins ago</span>
+
+                                                <h3 class="timeline-header border-0"><a href="#">Sarah Young</a>
+                                                    accepted your
+                                                    friend
+                                                    request
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <!-- END timeline item -->
+                                        <!-- timeline item -->
+                                        <div>
+                                            <i class="fas fa-comments bg-warning"></i>
+
+                                            <div class="timeline-item">
+                                                <span class="time"><i class="far fa-clock"></i> 27 mins ago</span>
+
+                                                <h3 class="timeline-header"><a href="#">Jay White</a> commented on your
+                                                    post
+                                                </h3>
+
+                                                <div class="timeline-body">
+                                                    Take me to your leader!
+                                                    Switzerland is small and neutral!
+                                                    We are more like Germany, ambitious and misunderstood!
+                                                </div>
+                                                <div class="timeline-footer">
+                                                    <a href="#" class="btn btn-warning btn-flat btn-sm">View comment</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END timeline item -->
+                                        <!-- timeline time label -->
+                                        <div class="time-label">
+                                            <span class="bg-success">
+                                                3 Jan. 2014
+                                            </span>
+                                        </div>
+                                        <!-- /.timeline-label -->
+                                        <!-- timeline item -->
+                                        <div>
+                                            <i class="fas fa-camera bg-purple"></i>
+
+                                            <div class="timeline-item">
+                                                <span class="time"><i class="far fa-clock"></i> 2 days ago</span>
+
+                                                <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos
+                                                </h3>
+
+                                                <div class="timeline-body">
+                                                    <!-- <img src="http://placehold.it/150x100" alt="...">
+                              <img src="http://placehold.it/150x100" alt="...">
+                              <img src="http://placehold.it/150x100" alt="...">
+                              <img src="http://placehold.it/150x100" alt="..."> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END timeline item -->
+                                        23:23:23<div>
+                                            <i class="far fa-clock bg-gray"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.tab-pane -->
+
+                                <div class="tab-pane" id="settings">
+                                    <form class="form-horizontal">
+                                        <div class="form-group row">
+                                            <label for="Tujuan" class="col-sm-2 col-form-label">Tujuan</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="tujuan" id="tujuan"
+                                                    placeholder="08123456789">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="produk" class="col-sm-2 col-form-label">Produk</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="produk" id="produk"
+                                                    placeholder="Pilih Nominal">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="pin" class="col-sm-2 col-form-label">Pin</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="pin" id="pin"
+                                                    placeholder="Pin Transaksi">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="offset-sm-2 col-sm-10">
+                                                <button type="submit" class="btn btn-danger">Kirim</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.tab-pane -->
+
+
+
+                                <div class="tab-pane" id="history">
+                                    <div class="card card-primary collapsed-card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">History</h3>
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-tool"
+                                                    data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            The body of the card
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="tab-pane" id="produks">
+                                    <div class="card card-primary collapsed-card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Produk</h3>
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-tool"
+                                                    data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            The body of the card
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="tab-pane" id="akun">
+                                    <div class="card card-primary collapsed-card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Akun</h3>
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-tool"
+                                                    data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            The body of the card
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <!-- /.tab-content -->
+                        </div><!-- /.card-body -->
+
+                    </div> <!-- /.Container-fluid -->
+                </section>
+
+
+
+
+
+
+                <!-- <a data-toggle="modal" data-target="#myModal">Buka Modal</a> -->
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- konten modal-->
+                        <div class="modal-content">
+                            <div class="modal-body">
+
+                                <section class='content-header'>
+                                    <h1>TRANSAKSI<small>Telkomsel</small>
+                                    </h1>
+                                </section>
+                                <section class='content' id='contentna'>
+                                    <div class='row'>
+
+                                        <div class='col-md-12'>
+
+                                            <div class='box box-primary'>
+                                                <div class='box-header'>
+                                                    <div class='col-md-5'>
+                                                        <form
+                                                            action="<?php echo base_url('transaksi/create_action'); ?>"
+                                                            method="post">
+                                                            <div class='box-body'>
+                                                                <div class='form-group'>Tujuan
+                                                                    <?php echo form_error('no_telp') ?>
+                                                                    <input type="text" class="form-control"
+                                                                        name="tujuan" id="tujuan"
+                                                                        placeholder="081234567890" />
+                                                                </div>
+                                                                <div class='form-group'>Produk
+                                                                    <?php echo form_error('id_nominal') ?>
+                                                                    <select data-toggle="modal" data-target="#sadia"
+                                                                        class="form-control" name='produk' id='produk'>
+
+
+                                                                        <option>- Pilih Nominal Produk -</option>
+
+                                                                        <?php
+                                                if (!empty($produk)) {
+                                                    foreach ($produk as $row) {
+                                                        echo "<option id='sadia' value='$row->id_produk'>$row->desc_produk <br>Harga Rp. $row->harga_produk</option>";
+                                                    }
+                                                }
+                                                ?>
+                                                                    </select>
+
+                                                                </div>
+                                                                <div class='form-group'>PIN
+                                                                    <input type="password" class="form-control"
+                                                                        name="pin" id="pin"
+                                                                        placeholder="PIN Transaksi" />
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div id="tampung"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                            </div>
+                            <!-- footer modal -->
+                            <div class="modal-footer">
+
+                                <button type="submit" class="btn btn-primary">Kirim</button>
+
+
+                                <button type="button" class="btn btn-default
+                  " data-dismiss="modal">Batal</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+            </div> <!-- /.content-wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+
+
+        <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="js/adminlte.min.js"></script>
+
+
+        <script type="text/javascript">
+            app.initialize();
+            navigator.notification.alert('SELAMAT DATANG CORDOVA');
+        </script>
+</body>
+
+</html>
